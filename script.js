@@ -8,7 +8,7 @@ let player1 = Player('Player1','X');
 let player2 = Player('Player2','O');
 
 const gameBoard = ()=>{
-    let gameArray = ['','','','','','','','',''];
+    let gameArray = [null,null,null,null,null,null,null,null,null];
 
     const winCheck = (symbol,position)=>{
         updateBoard(symbol,position);
@@ -24,10 +24,7 @@ const gameBoard = ()=>{
         ];
         
         for (const combination of winningCombinations) {
-            console.log(combination[0]);
-
-            if(gameArray[combination[0]] == symbol && gameArray[combination[1]] == symbol && gameArray[combination[2]] == symbol){
-                console.log("wine return truw");
+            if(gameArray[combination[0]] === symbol && gameArray[combination[1]] === symbol && gameArray[combination[2]] === symbol){
                 return true;
             }
         }
@@ -64,15 +61,16 @@ const gameFlow = (()=>{
 
     cells.forEach((cell)=>{
         cell.addEventListener('click',()=>{
-            if(cell.innerHTML == '' && gameOver!=true){
+            if(cell.innerHTML == '' && !gameOver){
                 cell.innerHTML = symbol;
                 position = cell.id;
                 if(turn == player1){
                     cell.setAttribute('style', 'background-color:red; border: 4px solid white');
                 }
-                if(turn == player2){
+                else if(turn == player2){
                     cell.setAttribute('style', 'background-color:green; border: 4px solid white');
                 }
+
                 if(board.winCheck(symbol,position)==true){
                     gameOver = true;
                     winner = turn.name;
@@ -88,7 +86,11 @@ const gameFlow = (()=>{
 
     reset.addEventListener('click',()=>{
         gameOver = false;
-        board.gameArray = ['','','','','','','','',''];
+        board = gameBoard();
+        turn = player1;
+        symbol = turn.symbol;
+        position = null;
+        winnerEle.setAttribute('style', 'visibility: hidden');
         cells.forEach((cell)=>{
             cell.innerHTML = '';
             cell.style = '';
