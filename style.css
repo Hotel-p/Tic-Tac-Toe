@@ -12,6 +12,27 @@ body{
     flex-direction: column;
 }
 
+.navigation{
+    display: flex;
+    gap: 84px;
+    align-items: center;
+}
+
+#reset{
+    width: 9rem;
+    height: 3rem;
+    font-size: 24px;
+    font-weight: bold;
+    border-radius: 20px;
+    background-color: black;
+    color: white;
+}
+
+#reset:hover{
+    background: gray;
+    outline: white;
+}
+
 .navbar{
     display: flex;
     align-items: center;
@@ -38,14 +59,14 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 84px;
 }
 
 .grid{
     display: grid;
-    grid-template-columns: repeat(3, 200px);
-    grid-template-rows: repeat(3, 200px);
+    grid-template-columns: repeat(3, 175px);
+    grid-template-rows: repeat(3, 175px);
     gap: 8px;
-    padding: 12px;
 }
 
 .grid-item{
@@ -54,11 +75,15 @@ body{
     align-items: center;
     font-size: 112px;
     background-color: white;
-    border: 4px solid black;
     border-radius: 24px;
 }
 
 .grid-item:hover{
-    border: 3px solid white;
+    outline: 3px solid white;
 }
 
+.winner{
+    font-size: 64px;
+    visibility: hidden;
+    letter-spacing: 24px;
+}

@@ -6,26 +6,31 @@
     <title>Tic-Tac-Toe</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="reset.css">
-    <script src="script.js" defer></script>
 </head>
 <body>
-    <div class="navbar">
-        <div class="gradient"></div>
-        <div class="nav">Tic-Tac-Toe</div>
+    <div class="navigation">
+        <div class="navbar">
+            <div class="gradient"></div>
+            <div class="nav">Tic-Tac-Toe</div>
+        </div>
+        <button id="reset">Reset</button>
     </div>
+    
     
     <div class="main">
         <div class="grid">
-            <div class="grid-item"></div>
-            <div class="grid-item"></div>
-            <div class="grid-item"></div>
-            <div class="grid-item"></div>
-            <div class="grid-item"></div>
-            <div class="grid-item"></div>
-            <div class="grid-item"></div>
-            <div class="grid-item"></div>
-            <div class="grid-item"></div>
+            <div class="grid-item" id="0"></div>
+            <div class="grid-item" id="1"></div>
+            <div class="grid-item" id="2"></div>
+            <div class="grid-item" id="3"></div>
+            <div class="grid-item" id="4"></div>
+            <div class="grid-item" id="5"></div>
+            <div class="grid-item" id="6"></div>
+            <div class="grid-item" id="7"></div>
+            <div class="grid-item" id="8"></div>
         </div>
+        <div class="winner"></div>
     </div>
+    <script src="script.js"></script>
 </body>
 </html>
