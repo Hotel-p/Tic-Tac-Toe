@@ -4,9 +4,6 @@ const Player = (name,symbol)=>{
     return {name,symbol}
 }
 
-let player1 = Player('Player1','X');
-let player2 = Player('Player2','O');
-
 const gameBoard = ()=>{
     let gameArray = [null,null,null,null,null,null,null,null,null];
 
@@ -35,18 +32,24 @@ const gameBoard = ()=>{
         gameArray[position] = symbol; 
     };
 
-    return { winCheck, gameArray };
+    return { winCheck };
 }
 
 const gameFlow = (()=>{
     const winnerEle = document.querySelector('.winner');
     const cells = document.querySelectorAll(".grid-item");
     const reset = document.getElementById('reset');
+    
+    let player1 = Player('Player1','X');
+    let player2 = Player('Player2','O');
+    
     let board = gameBoard();
     let turn = player1;
     let symbol = turn.symbol;
     let position;
     let gameOver = false;
+    let moves = 0;
+    let winner = null;
     
     let gameState = ()=>{
         if(turn == player1){
@@ -62,6 +65,7 @@ const gameFlow = (()=>{
     cells.forEach((cell)=>{
         cell.addEventListener('click',()=>{
             if(cell.innerHTML == '' && !gameOver){
+                moves++;
                 cell.innerHTML = symbol;
                 position = cell.id;
                 if(turn == player1){
@@ -81,6 +85,12 @@ const gameFlow = (()=>{
                     gameState();    
                 }
             }
+
+            if(moves == 9 && winner == null){
+                gameOver = true;
+                winnerEle.setAttribute('style', 'visibility: visible');
+                winnerEle.innerHTML = `It's a Tie !`;
+            }
         })
     })
 
@@ -90,6 +100,7 @@ const gameFlow = (()=>{
         turn = player1;
         symbol = turn.symbol;
         position = null;
+        moves = 0;
         winnerEle.setAttribute('style', 'visibility: hidden');
         cells.forEach((cell)=>{
             cell.innerHTML = '';
@@ -98,3 +109,4 @@ const gameFlow = (()=>{
     })
 
 })();
+
